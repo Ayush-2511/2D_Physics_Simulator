@@ -4,8 +4,8 @@ import numpy as np
 
 
 
-pos = np.array([100.0, 200.0])
-vel = np.array([10.0, 0.0])
+pos = np.array([100.0, 300.0])
+vel = np.array([500.0, 0.0])
 m = 2.0
 g = 9.81 * 50
 Force = np.array([0.0, -m * g])
@@ -25,7 +25,7 @@ ground = height - 50
 
 running = True
 while running:
-    dt = clock.tick(60) / 1000
+    dt = clock.tick(00) / 1000
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -42,7 +42,19 @@ while running:
     e = 0.9
     if pos[1] <= r:
         pos[1] = r
-        vel[1] = -e * vel[1]       
+        vel[1] = -e * vel[1]
+    
+    if pos[1] >= 450-r:
+        pos[1] = 450-r
+        vel[1] = -e * vel[1]
+
+    if pos[0] >= 500-r:
+        pos[0] = 500-r
+        vel[0] = -e * vel[0]
+
+    if pos[0] <= r:
+        pos[0] = r
+        vel[0] = -e * vel[0]    
 
 
     screen.fill((20,20,20))
